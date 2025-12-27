@@ -1,0 +1,59 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--color-segundo);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 1000;
+    font-family: var(--font-body);
+}
+
+/* Logo */
+.nav-logo img {
+    display: block;
+}
+
+/* Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    height: 100%;
+    margin-bottom: 0px;
+    font-size: 1.1rem;
+}
+
+.nav-links li:hover {
+    color: var(--color-sexto);
+}
+
+/* Botones */
+.nav-buttons button {
+    background-color: var(--color-quinto);
+    color: var(--color-white);
+
+    border: none;
+    padding: 8px 18px;
+    border-radius: var(--radius-pill);
+
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.nav-buttons button:hover {
+    background-color: var(--color-sexto);
+}

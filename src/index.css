@@ -1,0 +1,69 @@
+:root {
+    /* Colores principales */
+    --color-primero: #0B090A;
+    --color-segundo: #161A1D;
+
+    --color-tercero: #660708;
+    --color-cuarto: #A4161A;
+    --color-quinto: #BA181B;
+    --color-sexto: #E5383B;
+    --color-septimo: #B1A7A6;
+    --color-octavo: #D3D3D3;
+    --color-noveno: #F5F3F4;
+    --color-white: #FFFFFF;
+
+    /* UI */
+    --navbar-height: 120px;
+    --radius-pill: 20px;
+
+    /* Tipografía */
+    --font-title: 'BBH Bartle', sans-serif;
+    --font-subtitle: 'BBH Bogle', sans-serif;
+    --font-body: 'Archivo', system-ui, sans-serif;
+
+    --h1: 2.5rem;
+    --h2: 2rem;
+    --h3: 1.5rem;
+    --p: 1rem; 
+}
+
+/* ===== Reset / globales ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+h1 {
+  font-family: var(--font-title);
+  font-size: var(--h1-size);
+  font-weight: 700;
+}
+
+h2 {
+  font-family: var(--font-title);
+  font-size: var(--h2-size);
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-subtitle);
+  font-size: var(--h3-size);
+  font-weight: 600;
+}
+
+p {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}

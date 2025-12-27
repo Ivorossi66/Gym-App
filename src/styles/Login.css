@@ -1,0 +1,94 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primero);
+    padding-top: var(--navbar-height);
+}
+
+.login-card {
+    background-color: var(--color-segundo);
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-tercero);
+    text-align: center;
+}
+
+.login-card h2 {
+    color: var(--color-white);
+    margin-bottom: 25px;
+    font-family: var(--font-title);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: var(--color-octavo);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--color-tercero);
+    background-color: var(--color-primero);
+    color: var(--color-white);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--color-sexto);
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-quinto);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: var(--color-sexto);
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-icon {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: var(--color-octavo); 
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+    display: flex; /
+}
+
+.password-icon:hover {
+    color: var(--color-sexto);
+}

@@ -1,0 +1,196 @@
+section {
+    scroll-margin-top: 120px;
+    min-height: 100vh; 
+    padding: 20px;
+    border-bottom: 1px solid #333; 
+}
+
+.hero-section {
+    background-image: url(../assets/img/fondoInicio.png);
+    background-size: cover;
+    background-position: center;
+    margin-top: 90px;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.planes-section {
+    background-color: var(--color-noveno);
+}
+
+.ubicacion-section {
+    background-color: var(--color-white);
+}
+
+.gym-section {
+    background-color: var(--color-segundo);
+    color: var(--color-white);
+}
+
+.contacto-section {
+    background-color: var(--color-primero);
+    color: var(--color-white);
+}
+
+.cta-button {
+    background-color: var(--color-sexto);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: var(--radius-pill);
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* SECCION PLANES */
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--color-primero);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.planes-section {
+    background-color: var(--color-noveno);
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap; 
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Diseño de la Tarjeta */
+.plan-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-octavo);
+    border-radius: 15px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px); /* Efecto de levitar al pasar mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Plan Destacado (El del medio) */
+.plan-card.featured {
+    border: 2px solid var(--color-sexto);
+    transform: scale(1.05); /* Un poquito más grande por defecto */
+    z-index: 1;
+}
+
+.plan-card.featured:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.plan-card .tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-sexto);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.plan-card h3 {
+    font-family: var(--font-subtitle);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-segundo);
+}
+
+.plan-card .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primero);
+    margin-bottom: 20px;
+}
+
+.plan-card .price span {
+    font-size: 1rem;
+    color: var(--color-septimo);
+    font-weight: 400;
+}
+
+.plan-card ul {
+    list-style: none;
+    margin: 0 0 30px 0; 
+    padding: 0; 
+    flex-grow: 1;
+    width: 100%;
+}
+
+.plan-card ul li {
+    margin-bottom: 10px;
+    color: var(--color-segundo);
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.plan-button {
+    background-color: var(--color-primero);
+    color: white;
+    padding: 10px;
+    width: 90px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.plan-card.featured .plan-button {
+    background-color: var(--color-sexto); /* Botón rojo para el destacado */
+}
+
+.plan-button:hover {
+    opacity: 0.9;
+}
+
+
+/* RESPONSIVE */
+
+/* Media Query para celulares */
+@media (max-width: 768px) {
+    /* Ajustes del Hero */
+    .hero-content h1 {
+        font-size: 2.2rem; /* Más chico para que entre en pantalla vertical */
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        padding: 0 10px; /* Un poco de aire a los costados */
+    }
+
+    /* Ajuste para que el Navbar no tape el título en celular si es muy alto */
+    .hero-section {
+        background-attachment: scroll; /* En algunos móviles el 'fixed' anda mal, mejor scroll */
+    }
+}
