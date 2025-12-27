@@ -197,6 +197,184 @@ section {
 }
 
 
+/* SECCION GIMNASIO */
+
+.gym-section {
+    background-color: var(--color-segundo); /* Fondo oscuro */
+    color: var(--color-white);
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-subtitle {
+    color: var(--color-octavo);
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.gym-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gym-gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover; 
+    border-radius: 12px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.8); 
+}
+
+.gym-gallery img:hover {
+    transform: scale(1.03);
+    filter: brightness(1); 
+    z-index: 2;
+}
+
+
+/* SECCION CONTACTO */
+
+.contacto-section {
+    background-color: var(--color-primero); /* Fondo MÁS oscuro (casi negro) */
+    color: var(--color-white);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contacto-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que baje en celular */
+    justify-content: center;
+    gap: 50px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    text-align: left; /* Reseteamos alineación para el contenido interno */
+}
+
+/* --- Lado Izquierdo (Info) --- */
+.contacto-info {
+    flex: 1 1 400px; /* Crece, se achica, base de 400px */
+    text-align: center;
+    padding: 20px;
+}
+
+.trainer-photo {
+    width: 300px;  /* Aumentado de 200px a 300px */
+    height: 300px; /* Aumentado de 200px a 300px */
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--color-sexto); /* Borde un poquito más grueso */
+    box-shadow: 0 0 25px rgba(229, 56, 59, 0.4);
+    margin-bottom: 30px;
+}
+.info-text h3 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: var(--color-sexto);
+}
+
+.info-text .highlight {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-white);
+}
+
+.contact-data p {
+    margin-bottom: 12px;
+    color: var(--color-octavo);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* --- Lado Derecho (Formulario) --- */
+.contacto-form {
+    flex: 1 1 400px;
+    background-color: var(--color-segundo);
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.contacto-form h3 {
+    margin-bottom: 25px;
+    font-family: var(--font-subtitle);
+    text-align: center;
+}
+
+.contacto-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contacto-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-octavo);
+    font-size: 0.9rem;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--color-tercero);
+    background-color: var(--color-primero); 
+    color: var(--color-white);
+    font-family: var(--font-body);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+    border-color: var(--color-sexto); 
+}
+
+.submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-sexto);
+    color: white;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-button:hover {
+    background-color: var(--color-quinto);
+    transform: translateY(-3px);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .contact-data p {
+        justify-content: flex-start; /* Alinear datos a la izquierda en celular */
+    }
+    .contacto-info {
+        text-align: left; /* Alinear info a la izquierda en celular */
+    }
+    .trainer-photo {
+        margin: 0 auto 25px; /* Centrar foto solo horizontalmente */
+        display: block;
+    }
+}
+
+
 /* RESPONSIVE */
 
 /* Media Query para celulares */

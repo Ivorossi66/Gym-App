@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Home.css'
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 export const Home = () => {
 
@@ -105,18 +106,72 @@ export const Home = () => {
 
             {/* Sección Gimnasio (Fotos) */}
             <section id="gimnasio" className="section gym-section">
-                <h2>El Gimnasio</h2>
-                <p>Galería de fotos...</p>
+                <h2 className="section-title" style={{ color: 'white' }}>Nuestro Espacio</h2>
+                <p className="section-subtitle">Equipamiento de primera calidad para tu mejor rendimiento.</p>
+
+                <div className="gym-gallery">
+                    <img src="../src/assets/img/gym1.jpeg" alt="Interior del gimnasio foto 1" loading="lazy" />
+                    <img src="../src/assets/img/gym2.jpeg" alt="Interior del gimnasio foto 2" loading="lazy" />
+                    <img src="../src/assets/img/gym3.jpeg" alt="Interior del gimnasio foto 3" loading="lazy" />
+                    <img src="../src/assets/img/gym4.jpeg" alt="Interior del gimnasio foto 4" loading="lazy" />
+                    <img src="../src/assets/img/gym5.jpeg" alt="Interior del gimnasio foto 5" loading="lazy" />
+                    <img src="../src/assets/img/gym6.jpeg" alt="Interior del gimnasio foto 6" loading="lazy" />
+                </div>
             </section>
 
             {/* Sección Contacto */}
-            <section id="contacto" className="section contacto-section">
-                <h2>Contacto</h2>
-                <div className="contacto-grid">
-                    <div className="foto-mateo">Foto Mateo</div>
-                    <div className="formulario">Formulario</div>
+           <section id="contacto" className="section contacto-section">
+        <h2 className="section-title" style={{color: 'white'}}>Empezá tu cambio hoy</h2>
+        
+        <div className="contacto-container">
+            
+            {/* Columna Izquierda: Foto y Datos */}
+            <div className="contacto-info">
+                <img src="./src/assets/img/fotoMateo.jpeg" alt="Entrenador Mateo" className="trainer-photo" />
+                <div className="info-text">
+                    <h3>Mateo F.</h3>
+                    <p className="highlight">Profesor de Educación Física</p>
+                    
+                    <div className="contact-data">
+                        <p>📍 Cura Brochero 562 | Las Varillas, Córdoba</p>
+                        
+                        {/* WhatsApp con Ícono */}
+                        <p 
+                           style={{cursor:'pointer', color: '#25D366', fontWeight: 'bold'}} 
+                           onClick={() => window.open('https://wa.me/5493533435324', '_blank')}
+                        >
+                            <FaWhatsapp size={24} /> +54 9 3533 43-5324
+                        </p>
+
+                        {/* Instagram con Ícono */}
+                        <p 
+                           style={{cursor:'pointer', color: '#E1306C', fontWeight: 'bold'}} 
+                           onClick={() => window.open('https://www.instagram.com/entrenamientopersonal.mf/', '_blank')}
+                        >
+                            <FaInstagram size={24} /> @entrenamientopersonal.mf
+                        </p>
+                    </div>
                 </div>
-            </section>
+            </div>
+
+            {/* Columna Derecha: Formulario */}
+            <form className="contacto-form" onSubmit={(e) => e.preventDefault()}>
+                <h3>Envianos tu consulta</h3>
+                <div className="form-group">
+                    <label htmlFor="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="mensaje">Mensaje</label>
+                    <textarea id="mensaje" rows="5" placeholder="Hola, me gustaría saber horarios..." required></textarea>
+                </div>
+
+                <button type="submit" className="submit-button">Enviar Mensaje</button>
+            </form>
+
+        </div>
+      </section>
 
         </div>
     )
