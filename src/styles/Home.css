@@ -9,7 +9,7 @@ section {
     background-image: url(../assets/img/fondoInicio.png);
     background-size: cover;
     background-position: center;
-    margin-top: 90px;
+    margin-top: 100px;
     color: var(--color-white);
     display: flex;
     align-items: center;
@@ -97,7 +97,7 @@ section {
 /* Plan Destacado (El del medio) */
 .plan-card.featured {
     border: 2px solid var(--color-sexto);
-    transform: scale(1.05); /* Un poquito más grande por defecto */
+    transform: scale(1.05); 
     z-index: 1;
 }
 
@@ -172,6 +172,28 @@ section {
 
 .plan-button:hover {
     opacity: 0.9;
+}
+
+/* UBICACIÓN */
+.ubicacion-section {
+    background-color: var(--color-white); 
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1000px; 
+    margin: 0 auto; /* Centrar el contenedor */
+    padding: 0 20px; 
+}
+
+.map-container iframe {
+    display: block;
+    border-radius: 15px; 
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
 }
 
 
