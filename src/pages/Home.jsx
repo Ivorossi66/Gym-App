@@ -41,7 +41,7 @@ export const Home = () => {
                     {/* Plan 1: 2 Días */}
                     <div className="plan-card">
                         <h3>2 Días</h3>
-                        <div className="price">$40.000<span>/mes</span></div>
+                        <div className="price">$38.000<span>/mes</span></div>
                         <ul>
                             <li>Acceso 2 veces por semana</li>
                             <li>Rutina de adaptación</li>
@@ -57,7 +57,7 @@ export const Home = () => {
                     <div className="plan-card featured">
                         <div className="tag">Recomendado</div>
                         <h3>3 Días</h3>
-                        <div className="price">$43.000<span>/mes</span></div>
+                        <div className="price">$40.000<span>/mes</span></div>
                         <ul>
                             <li>Acceso 3 veces por semana</li>
                             <li>Rutina dividida</li>
@@ -72,7 +72,7 @@ export const Home = () => {
                     {/* Plan 3: Pase Libre */}
                     <div className="plan-card">
                         <h3>Pase Libre</h3>
-                        <div className="price">$45.000<span>/mes</span></div>
+                        <div className="price">$43.000<span>/mes</span></div>
                         <ul>
                             <li>Acceso ilimitado</li>
                             <li>Entrená cuando quieras</li>
@@ -89,7 +89,7 @@ export const Home = () => {
 
             {/* Sección Ubicación */}
             <section id="ubicacion" className="ubicacion-section">
-                <h2>Ubicación</h2>
+                <h2 className="section-title">Ubicación</h2>
                 <div className="map-container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3388.5878524566197!2d-62.71964292456829!3d-31.863428774058715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cb6560e334174d%3A0xafcfa739ef082f42!2sKine%20Club!5e0!3m2!1ses!2sar!4v1766843102271!5m2!1ses!2sar"

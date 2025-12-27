@@ -167,7 +167,7 @@ section {
 }
 
 .plan-card.featured .plan-button {
-    background-color: var(--color-sexto); /* Botón rojo para el destacado */
+    background-color: var(--color-sexto); 
 }
 
 .plan-button:hover {
@@ -176,31 +176,37 @@ section {
 
 /* UBICACIÓN */
 .ubicacion-section {
-    background-color: var(--color-white); 
+    background-color: var(--color-white);
     padding: 80px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.ubicacion-section .section-title {
+    text-align: center; 
+    margin-bottom: 60px; 
+    width: 100%;
+    padding: 0 20px;
+}
+
 .map-container {
     width: 100%;
-    max-width: 1000px; 
-    margin: 0 auto; /* Centrar el contenedor */
-    padding: 0 20px; 
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .map-container iframe {
     display: block;
-    border-radius: 15px; 
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+    border-radius: 15px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
 }
-
 
 /* SECCION GIMNASIO */
 
 .gym-section {
-    background-color: var(--color-segundo); /* Fondo oscuro */
+    background-color: var(--color-segundo); 
     color: var(--color-white);
     text-align: center;
     padding: 80px 20px;
@@ -243,7 +249,7 @@ section {
 /* SECCION CONTACTO */
 
 .contacto-section {
-    background-color: var(--color-primero); /* Fondo MÁS oscuro (casi negro) */
+    background-color: var(--color-primero); 
     color: var(--color-white);
     padding: 80px 20px;
     text-align: center;
@@ -251,27 +257,27 @@ section {
 
 .contacto-container {
     display: flex;
-    flex-wrap: wrap; /* Para que baje en celular */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 50px;
     max-width: 1100px;
     margin: 40px auto 0;
-    text-align: left; /* Reseteamos alineación para el contenido interno */
+    text-align: left; 
 }
 
 /* --- Lado Izquierdo (Info) --- */
 .contacto-info {
-    flex: 1 1 400px; /* Crece, se achica, base de 400px */
+    flex: 1 1 400px; 
     text-align: center;
     padding: 20px;
 }
 
 .trainer-photo {
-    width: 300px;  /* Aumentado de 200px a 300px */
-    height: 300px; /* Aumentado de 200px a 300px */
+    width: 300px;  
+    height: 300px; 
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid var(--color-sexto); /* Borde un poquito más grueso */
+    border: 5px solid var(--color-sexto); 
     box-shadow: 0 0 25px rgba(229, 56, 59, 0.4);
     margin-bottom: 30px;
 }
