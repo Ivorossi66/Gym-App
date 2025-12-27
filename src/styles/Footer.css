@@ -1,0 +1,64 @@
+.footer {
+    background-color: #000; /* Negro puro o --color-primero si preferís */
+    color: var(--color-octavo); /* Texto grisáceo */
+    padding: 30px 20px;
+    border-top: 1px solid #222; /* Una línea sutil para separar */
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+}
+
+.developer-credit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.dev-name {
+    color: var(--color-white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.dev-name:hover {
+    color: var(--color-sexto); 
+}
+
+.dev-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.dev-socials a {
+    color: var(--color-octavo);
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.dev-socials a:hover {
+    color: var(--color-white);
+}
+
+
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .developer-credit {
+        align-items: flex-end; 
+    }
+}

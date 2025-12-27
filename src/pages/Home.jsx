@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/Home.css'
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
+import Footer from '../components/Footer';
 
 export const Home = () => {
 
@@ -120,59 +121,59 @@ export const Home = () => {
             </section>
 
             {/* Sección Contacto */}
-           <section id="contacto" className="section contacto-section">
-        <h2 className="section-title" style={{color: 'white'}}>Empezá tu cambio hoy</h2>
-        
-        <div className="contacto-container">
-            
-            {/* Columna Izquierda: Foto y Datos */}
-            <div className="contacto-info">
-                <img src="./src/assets/img/fotoMateo.jpeg" alt="Entrenador Mateo" className="trainer-photo" />
-                <div className="info-text">
-                    <h3>Mateo F.</h3>
-                    <p className="highlight">Profesor de Educación Física</p>
-                    
-                    <div className="contact-data">
-                        <p>📍 Cura Brochero 562 | Las Varillas, Córdoba</p>
-                        
-                        {/* WhatsApp con Ícono */}
-                        <p 
-                           style={{cursor:'pointer', color: '#25D366', fontWeight: 'bold'}} 
-                           onClick={() => window.open('https://wa.me/5493533435324', '_blank')}
-                        >
-                            <FaWhatsapp size={24} /> +54 9 3533 43-5324
-                        </p>
+            <section id="contacto" className="section contacto-section">
+                <h2 className="section-title" style={{ color: 'white' }}>Empezá tu cambio hoy</h2>
 
-                        {/* Instagram con Ícono */}
-                        <p 
-                           style={{cursor:'pointer', color: '#E1306C', fontWeight: 'bold'}} 
-                           onClick={() => window.open('https://www.instagram.com/entrenamientopersonal.mf/', '_blank')}
-                        >
-                            <FaInstagram size={24} /> @entrenamientopersonal.mf
-                        </p>
+                <div className="contacto-container">
+
+                    {/* Columna Izquierda: Foto y Datos */}
+                    <div className="contacto-info">
+                        <img src="./src/assets/img/fotoMateo.jpeg" alt="Entrenador Mateo" className="trainer-photo" />
+                        <div className="info-text">
+                            <h3>Mateo F.</h3>
+                            <p className="highlight">Profesor de Educación Física</p>
+
+                            <div className="contact-data">
+                                <p>📍 Cura Brochero 562 | Las Varillas, Córdoba</p>
+
+                                {/* WhatsApp con Ícono */}
+                                <p
+                                    style={{ cursor: 'pointer', color: '#25D366', fontWeight: 'bold' }}
+                                    onClick={() => window.open('https://wa.me/5493533435324', '_blank')}
+                                >
+                                    <FaWhatsapp size={24} /> +54 9 3533 43-5324
+                                </p>
+
+                                {/* Instagram con Ícono */}
+                                <p
+                                    style={{ cursor: 'pointer', color: '#E1306C', fontWeight: 'bold' }}
+                                    onClick={() => window.open('https://www.instagram.com/entrenamientopersonal.mf/', '_blank')}
+                                >
+                                    <FaInstagram size={24} /> @entrenamientopersonal.mf
+                                </p>
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Columna Derecha: Formulario */}
+                    <form className="contacto-form" onSubmit={(e) => e.preventDefault()}>
+                        <h3>Envianos tu consulta</h3>
+                        <div className="form-group">
+                            <label htmlFor="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="mensaje">Mensaje</label>
+                            <textarea id="mensaje" rows="5" placeholder="Hola, me gustaría saber horarios..." required></textarea>
+                        </div>
+
+                        <button type="submit" className="submit-button">Enviar Mensaje</button>
+                    </form>
                 </div>
-            </div>
-
-            {/* Columna Derecha: Formulario */}
-            <form className="contacto-form" onSubmit={(e) => e.preventDefault()}>
-                <h3>Envianos tu consulta</h3>
-                <div className="form-group">
-                    <label htmlFor="nombre">Nombre Completo</label>
-                    <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="mensaje">Mensaje</label>
-                    <textarea id="mensaje" rows="5" placeholder="Hola, me gustaría saber horarios..." required></textarea>
-                </div>
-
-                <button type="submit" className="submit-button">Enviar Mensaje</button>
-            </form>
-
-        </div>
-      </section>
-
+            </section>
+            {/* Sección Footer */}
+            <Footer />
         </div>
     )
 }
