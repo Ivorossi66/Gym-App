@@ -2,6 +2,18 @@ import React from 'react'
 import '../styles/Home.css'
 
 export const Home = () => {
+
+    // --- LÓGICA DE WHATSAPP ---
+    const handleChoosePlan = (planName) => {
+        const phoneNumber = "+5493533435324";
+
+        const message = `Hola Mateo! Me interesa saber más sobre el plan *${planName}* para empezar a entrenar.`;
+
+        const encodedMessage = encodeURIComponent(message);
+
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    };
+
     return (
         <div className="home-container">
 
@@ -21,49 +33,58 @@ export const Home = () => {
 
             {/* Sección Planes */}
             <section id="planes" className="section planes-section">
-        <h2 className="section-title">Elegí tu Plan</h2>
-        
-        <div className="cards-container">
-            
-            {/* Plan 1: 2 Días */}
-            <div className="plan-card">
-                <h3>2 Días</h3>
-                <div className="price">$40.000<span>/mes</span></div>
-                <ul>
-                    <li>Acceso 2 veces por semana</li>
-                    <li>Rutina de adaptación</li>
-                    <li>Ideal para empezar</li>
-                </ul>
-                <button className="plan-button">Elegir</button>
-            </div>
+                <h2 className="section-title">Elegí tu Plan</h2>
 
-            {/* Plan 2: 3 Días (Destacado visualmente) */}
-            <div className="plan-card featured">
-                <div className="tag">Recomendado</div>
-                <h3>3 Días</h3>
-                <div className="price">$43.000<span>/mes</span></div>
-                <ul>
-                    <li>Acceso 3 veces por semana</li>
-                    <li>Rutina dividida</li>
-                    <li>Seguimiento de progreso</li>
-                </ul>
-                <button className="plan-button">Elegir</button>
-            </div>
+                <div className="cards-container">
 
-            {/* Plan 3: Pase Libre */}
-            <div className="plan-card">
-                <h3>Pase Libre</h3>
-                <div className="price">$45.000<span>/mes</span></div>
-                <ul>
-                    <li>Acceso ilimitado</li>
-                    <li>Entrená cuando quieras</li>
-                    <li>Rutina personalizada completa</li>
-                </ul>
-                <button className="plan-button">Elegir</button>
-            </div>
+                    {/* Plan 1: 2 Días */}
+                    <div className="plan-card">
+                        <h3>2 Días</h3>
+                        <div className="price">$40.000<span>/mes</span></div>
+                        <ul>
+                            <li>Acceso 2 veces por semana</li>
+                            <li>Rutina de adaptación</li>
+                            <li>Ideal para empezar</li>
+                        </ul>
+                        <button className="plan-button" onClick={() => handleChoosePlan("2 Días")}
+                        >
+                            Elegir
+                        </button>
+                    </div>
 
-        </div>
-      </section>
+                    {/* Plan 2: 3 Días (Destacado visualmente) */}
+                    <div className="plan-card featured">
+                        <div className="tag">Recomendado</div>
+                        <h3>3 Días</h3>
+                        <div className="price">$43.000<span>/mes</span></div>
+                        <ul>
+                            <li>Acceso 3 veces por semana</li>
+                            <li>Rutina dividida</li>
+                            <li>Seguimiento de progreso</li>
+                        </ul>
+                        <button className="plan-button" onClick={() => handleChoosePlan("3 Días")}
+                        >
+                            Elegir
+                        </button>
+                    </div>
+
+                    {/* Plan 3: Pase Libre */}
+                    <div className="plan-card">
+                        <h3>Pase Libre</h3>
+                        <div className="price">$45.000<span>/mes</span></div>
+                        <ul>
+                            <li>Acceso ilimitado</li>
+                            <li>Entrená cuando quieras</li>
+                            <li>Rutina personalizada completa</li>
+                        </ul>
+                        <button className="plan-button" onClick={() => handleChoosePlan("Pase Libre")}
+                        >
+                            Elegir
+                        </button>
+                    </div>
+
+                </div>
+            </section>
 
             {/* Sección Ubicación */}
             <section id="ubicacion" className="section ubicacion-section">
