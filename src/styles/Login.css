@@ -16,9 +16,7 @@
   padding: 0;
 }
 
-/* =========================================
-   ESTRUCTURA BASE (DESKTOP - COMPUTADORAS)
-   ========================================= */
+/* ESTRUCTURA BASE - COMPUTADORAS */
 
 .brand-logo {
   height: 50px; 
@@ -34,16 +32,16 @@
 }
 
 .split-screen-container {
-    position: fixed; /* CLAVE: Se sale del flujo normal */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999; /* CLAVE: Se pone por encima de tu Navbar */
+    width: 100%; /* CAMBIO: % es más seguro que vw para evitar scroll horizontal */
+    height: 100%;
+    z-index: 9999; /* Se mantiene encima del Nav */
     display: flex;
     background-color: var(--bg-main-dark);
     font-family: 'Inter', 'Roboto', sans-serif;
-    overflow: hidden; /* Evita scrolls dobles */
+    overflow: hidden; 
 }
 
 /* --- PANE IZQUIERDO (BANNER) --- */
@@ -86,7 +84,7 @@
 
 /* --- PANEL DERECHO (FORMULARIO) --- */
 .right-pane-form {
-    flex: 1; /* 40-45% del ancho */
+    flex: 1; 
     height: 100%;
     background-color: var(--bg-main-dark);
     display: flex;
@@ -231,32 +229,40 @@ label {
 }
 
 /* Responsive */
-
-/* 1. TABLETS Y MÓVILES (Todo lo que sea menor a 900px de ancho) */
 @media (max-width: 900px) {
     .split-screen-container {
-        flex-direction: column; /* Uno arriba del otro */
-        position: relative; /* Vuelve al flujo normal para poder hacer scroll */
-        height: auto; /* La altura se adapta al contenido total */
-        min-height: 100vh;
-        overflow-y: visible; /* Permite que se vea todo */
+        /* CLAVE 1: Mantenemos fixed para tapar el Navbar */
+        position: fixed; 
+        flex-direction: column;
+        
+        /* CLAVE 2: Permitimos scroll DENTRO del contenedor fijo */
+        overflow-y: auto; 
+        overflow-x: hidden; /* Prohibido scroll lateral */
+        
+        /* Aseguramos que ocupe todo */
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        
+        /* Fix para navegadores móviles (Safari/Chrome) */
+        -webkit-overflow-scrolling: touch; 
     }
 
-    /* CORRECCIÓN PRINCIPAL AQUÍ */
     .left-pane-banner {
         width: 100%;
-        height: auto; /* IMPORTANTE: Deja que la altura se adapte al texto */
-        min-height: auto; /* Quitamos la altura mínima fija */
+        height: auto; 
+        min-height: auto; 
         flex: none;
     }
 
     .overlay-dark {
-        padding: 4rem 2rem; /* Le damos buen espacio arriba y abajo */
-        justify-content: flex-end; /* Alineamos el texto abajo */
+        padding: 4rem 2rem;
+        justify-content: flex-end;
     }
 
     .main-headline {
-        font-size: 2.5rem; /* Un tamaño más manejable */
+        font-size: 2.5rem;
         margin-top: 1rem;
         line-height: 1;
     }
@@ -266,26 +272,22 @@ label {
         height: auto;
         flex: none;
         padding: 3rem 2rem;
-        overflow: visible;
     }
 }
 
-/* 2. CELULARES PEQUEÑOS (Menor a 480px, como el de tu captura) */
+/* 2. CELULARES  */
 @media (max-width: 480px) {
     .overlay-dark {
-        padding: 3rem 1.5rem; /* Reducimos un poco el padding lateral */
+        padding: 3rem 1.5rem;
     }
-
     .main-headline {
-        font-size: 2rem !important; /* Reducimos el título para que no ocupe tanto */
+        font-size: 2rem !important;
     }
-    
     .brand-tagline {
         font-size: 0.9rem;
     }
-
     .brand-logo {
-        height: 30px; /* Achicamos un poco el logo también */
+        height: 30px;
     }
 }
 
