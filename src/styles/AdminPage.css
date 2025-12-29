@@ -1,0 +1,232 @@
+.admin-container {
+  min-height: 100vh;
+  background-color: var(--admin-bg);
+  padding: 2rem; 
+  padding-top: 100px; /* Espacio para que no lo tape el Navbar fijo */
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.logout-btn-small {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn-small:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+/* STATS CARDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Colores de estado para iconos y números */
+.active-color { color: var(--accent-green); }
+.income-color { color: var(--accent-green); } 
+.danger-color { color: var(--accent-red); }
+
+/* TABS (Botones de navegación) */
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.tab-btn:hover { color: var(--text-main); }
+
+.tab-btn.active {
+  background-color: var(--accent-red); /* Pestaña activa en rojo */
+  color: white;
+}
+
+/* TABLA DE CLIENTES */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary-admin {
+  background-color: var(--accent-red);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.btn-primary-admin:hover { background-color: var(--accent-red-hover); }
+
+.table-responsive {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow-x: auto; /* Permite scroll lateral en móvil si la tabla es muy ancha */
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px; /* Ancho mínimo para mantener estructura */
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid #2a2a2a;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td { border-bottom: none; }
+
+/* Estilos de Celdas */
+.text-muted { color: var(--text-secondary); font-size: 0.9rem; }
+
+/* Badges de Planes (Etiquetas de color según plan) */
+.badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+/* Colores específicos para cada plan */
+.plan-premium { background-color: rgba(211, 47, 47, 0.2); color: #ff8a80; border: 1px solid var(--accent-red); }
+.plan-básico { background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid #555; }
+.plan-estándar { background-color: rgba(255, 214, 0, 0.15); color: #ffff00; border: 1px solid #b2a300; }
+
+/* Status Dot (Punto verde/gris) */
+.status-dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+.status-active { background-color: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); }
+.status-inactive { background-color: #666; }
+
+/* Etiquetas de Pago (Sí/No) */
+.tag-success { 
+  background-color: rgba(0, 200, 83, 0.2); 
+  color: #69f0ae; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  font-weight: 600; 
+  font-size: 0.85rem;
+}
+.tag-danger { 
+  background-color: rgba(211, 47, 47, 0.2); 
+  color: #ff8a80; 
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  font-weight: 600; 
+  font-size: 0.85rem;
+}
+
+/* Botones de acción (Editar/Borrar) */
+.actions-cell { display: flex; gap: 10px; }
+
+.action-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.action-btn:hover { border-color: white; color: white; }
+.action-btn.delete:hover { border-color: var(--accent-red); color: var(--accent-red); }
