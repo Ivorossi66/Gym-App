@@ -1,94 +1,291 @@
-.login-container {
-    min-height: 100vh;
+:root {
+  --gym-red: #D32F2F;
+  --gym-red-dark: #b71c1c;
+  --bg-main-dark: #121212;
+  --bg-secondary: #1E1E1E;
+  --bg-input: #2C2C2C;
+  --text-white: #FFFFFF;
+  --text-gray: #B0B0B0;
+  --text-placeholder: #666666;
+  --border-color: #444444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   ESTRUCTURA BASE (DESKTOP - COMPUTADORAS)
+   ========================================= */
+
+.brand-logo {
+  height: 50px; 
+  width: auto; 
+  margin-right: 12px; 
+  object-fit: contain;
+}
+
+.brand-tagline {
+  display: flex; 
+  align-items: center; 
+  color: #FFFFFF;
+}
+
+.split-screen-container {
+    position: fixed; /* CLAVE: Se sale del flujo normal */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999; /* CLAVE: Se pone por encima de tu Navbar */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-primero);
-    padding-top: var(--navbar-height);
+    background-color: var(--bg-main-dark);
+    font-family: 'Inter', 'Roboto', sans-serif;
+    overflow: hidden; /* Evita scrolls dobles */
 }
 
-.login-card {
-    background-color: var(--color-segundo);
-    padding: 40px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--color-tercero);
-    text-align: center;
-}
-
-.login-card h2 {
-    color: var(--color-white);
-    margin-bottom: 25px;
-    font-family: var(--font-title);
-}
-
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    color: var(--color-octavo);
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid var(--color-tercero);
-    background-color: var(--color-primero);
-    color: var(--color-white);
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus {
-    border-color: var(--color-sexto);
-}
-
-.login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--color-quinto);
-    color: var(--color-white);
-    border: none;
-    border-radius: var(--radius-pill);
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.2s;
-}
-
-.login-button:hover {
-    background-color: var(--color-sexto);
-}
-
-input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear {
-  display: none;
-}
-
-.password-wrapper {
+/* --- PANE IZQUIERDO (BANNER) --- */
+.left-pane-banner {
+    flex: 1.2;
     position: relative;
+    background-image: url(../assets/img/gym4.jpeg);
+    background-size: cover;
+    background-position: center;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    height: 100%;
 }
 
+/* Overlay oscuro para leer el texto */
+.overlay-dark {
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.2) 100%);
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+/* Título Gigante */
+.main-headline {
+    color: var(--text-white);
+    font-size: 3.5vw;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.sub-headline {
+    color: #B0B0B0;
+}
+
+/* --- PANEL DERECHO (FORMULARIO) --- */
+.right-pane-form {
+    flex: 1; /* 40-45% del ancho */
+    height: 100%;
+    background-color: var(--bg-main-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+    overflow-y: auto; 
+}
+
+/* Contenedor del form */
+.form-wrapper {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* Enlaces y Textos */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-gray);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+.back-link:hover { color: var(--gym-red); }
+
+.login-header { margin-bottom: 2rem; }
+.login-header h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: var(--text-white);
+}
+.login-subtitle { color: var(--text-gray); font-size: 1rem; }
+
+/* INPUTS Y FORMULARIO */
+.form-group { margin-bottom: 1.25rem; }
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-gray);
+}
+
+.label-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link, .accent-link {
+  color: var(--gym-red);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.forgot-link:hover, .accent-link:hover { text-decoration: underline; color: #ff5c5c; }
+
+.styled-input {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-white);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+.styled-input:focus {
+  outline: none;
+  border-color: var(--gym-red);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.15);
+}
+
+.password-wrapper { position: relative; }
+.password-input { padding-right: 45px; }
 .password-icon {
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-    color: var(--color-octavo); 
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    display: flex; /
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-gray);
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
-.password-icon:hover {
-    color: var(--color-sexto);
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
+.cb-icon { font-size: 1.5rem; color: var(--text-gray); }
+.cb-icon.checked { color: var(--gym-red); }
+
+/* BOTÓN */
+.login-button-large {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--gym-red);
+  color: var(--text-white);
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+.login-button-large:hover { background-color: var(--gym-red-dark); }
+.login-button-large:disabled { background-color: #555; cursor: wait; opacity: 0.7;}
+
+.register-link-container {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 0.95rem;
+}
+
+.error-banner {
+  background-color: rgba(220, 38, 38, 0.1);
+  color: #ef5350;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Responsive */
+
+/* 1. TABLETS Y MÓVILES (Todo lo que sea menor a 900px de ancho) */
+@media (max-width: 900px) {
+    .split-screen-container {
+        flex-direction: column; /* Uno arriba del otro */
+        position: relative; /* Vuelve al flujo normal para poder hacer scroll */
+        height: auto; /* La altura se adapta al contenido total */
+        min-height: 100vh;
+        overflow-y: visible; /* Permite que se vea todo */
+    }
+
+    /* CORRECCIÓN PRINCIPAL AQUÍ */
+    .left-pane-banner {
+        width: 100%;
+        height: auto; /* IMPORTANTE: Deja que la altura se adapte al texto */
+        min-height: auto; /* Quitamos la altura mínima fija */
+        flex: none;
+    }
+
+    .overlay-dark {
+        padding: 4rem 2rem; /* Le damos buen espacio arriba y abajo */
+        justify-content: flex-end; /* Alineamos el texto abajo */
+    }
+
+    .main-headline {
+        font-size: 2.5rem; /* Un tamaño más manejable */
+        margin-top: 1rem;
+        line-height: 1;
+    }
+
+    .right-pane-form {
+        width: 100%;
+        height: auto;
+        flex: none;
+        padding: 3rem 2rem;
+        overflow: visible;
+    }
+}
+
+/* 2. CELULARES PEQUEÑOS (Menor a 480px, como el de tu captura) */
+@media (max-width: 480px) {
+    .overlay-dark {
+        padding: 3rem 1.5rem; /* Reducimos un poco el padding lateral */
+    }
+
+    .main-headline {
+        font-size: 2rem !important; /* Reducimos el título para que no ocupe tanto */
+    }
+    
+    .brand-tagline {
+        font-size: 0.9rem;
+    }
+
+    .brand-logo {
+        height: 30px; /* Achicamos un poco el logo también */
+    }
+}
+

@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom'; // Para navegar
-import { supabase } from '../supabase/client'; // Importamos tu cliente
+import { FaEye, FaEyeSlash, FaArrowLeft } from "react-icons/fa";
+import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import { useNavigate, Link } from 'react-router-dom';
+import { supabase } from '../supabase/client';
 import '../styles/Login.css'
+import logoGym from '../assets/img/image.png';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); // Para deshabilitar botón mientras carga
-  const [errorMsg, setErrorMsg] = useState(null); // Para mostrar errores en pantalla
+  const [rememberMe, setRememberMe] = useState(false); // Estado para "Recordar dispositivo"
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const navigate = useNavigate();
 
@@ -19,7 +22,6 @@ export const Login = () => {
     setErrorMsg(null);
 
     try {
-      // 1. Intentamos iniciar sesión con Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -27,25 +29,21 @@ export const Login = () => {
 
       if (authError) throw authError;
 
-      // 2. Si el login es correcto, consultamos la tabla 'profiles' para saber el rol
       const userId = authData.user.id;
-      
       const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('role')
         .eq('id', userId)
-        .single(); // .single() porque esperamos un solo resultado
+        .single();
 
       if (profileError) throw profileError;
 
-      // 3. Redirigimos según el rol
       if (profileData.role === 'admin') {
         navigate('/admin');
       } else if (profileData.role === 'client') {
         navigate('/cliente');
       } else {
-        // Por seguridad, si no tiene rol definido
-        setErrorMsg('Usuario sin rol asignado. Contacte al gimnasio.');
+        setErrorMsg('Usuario sin rol asignado.');
       }
 
     } catch (error) {
@@ -57,50 +55,89 @@ export const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <h2>Bienvenido</h2>
-        
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              placeholder="ejemplo@gym.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required 
-            />
+    <div className="split-screen-container">
+      {/* --- COLUMNA IZQUIERDA (IMAGEN Y TEXTO GRANDE) --- */}
+      <div className="left-pane-banner">
+        <div className="banner-content overlay-dark">
+          <div className="brand-tagline">
+            <img src={logoGym} alt="Logo Gym" className="brand-logo" />
+            ENTRENAMIENTO PERSONAL MF
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Contraseña</label>
-            <div className="password-wrapper">
-              <input 
-                type={showPassword ? "text" : "password"}
-                id="password" 
-                placeholder="******"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required 
+          <h1 className="main-headline">
+            TRANSFORMA TU ESFUERZO<br />EN RESULTADOS REALES.
+          </h1>
+          <p className="sub-headline">
+            Accede a tus rutinas personalizadas, sigue tu progreso y gestiona tus planes en un solo lugar.
+          </p>
+        </div>
+      </div>
+
+      {/* --- COLUMNA DERECHA (FORMULARIO) --- */}
+      <div className="right-pane-form">
+        <div className="form-wrapper">
+          <Link to="/" className="back-link">
+            <FaArrowLeft /> Volver al inicio
+          </Link>
+
+          <div className="login-header">
+            <h2>BIENVENIDO</h2>
+            <p className="login-subtitle">Ingresa tus credenciales para acceder a tu panel de cliente.</p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Correo electrónico</label>
+              <input
+                type="email"
+                id="email"
+                className="styled-input"
+                placeholder="ejemplo@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <span 
-                className="password-icon" 
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </span>
             </div>
-          </div>
 
-          {/* Mensaje de error si falla */}
-          {errorMsg && <p style={{color: 'red', marginBottom: '10px'}}>{errorMsg}</p>}
+            <div className="form-group">
+              <div className="label-split">
+                <label htmlFor="password">Contraseña</label>
+                <Link to="/forgot-password" className="forgot-link">¿Olvidaste tu contraseña?</Link>
+              </div>
 
-          <button type="submit" className="login-button" disabled={loading}>
-            {loading ? 'Cargando...' : 'Ingresar'}
-          </button>
-        </form>
+              <div className="password-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  className="styled-input password-input"
+                  placeholder="******"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <span
+                  className="password-icon"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+            </div>
+
+            {/* Checkbox personalizado */}
+            <div className="form-group checkbox-group" onClick={() => setRememberMe(!rememberMe)}>
+              {rememberMe ? <MdCheckBox className="cb-icon checked" /> : <MdCheckBoxOutlineBlank className="cb-icon" />}
+              <span>Recordar mi dispositivo</span>
+            </div>
+
+            {/* Mensaje de error */}
+            {errorMsg && <div className="error-banner">{errorMsg}</div>}
+
+            <button type="submit" className="login-button-large" disabled={loading}>
+              {loading ? 'CARGANDO...' : 'INICIAR SESIÓN'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   )
