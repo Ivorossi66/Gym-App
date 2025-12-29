@@ -5,55 +5,143 @@
     height: var(--navbar-height);
     background-color: var(--color-segundo);
     color: var(--color-white);
+    display: flex; 
+    justify-content: center; 
+    z-index: 1000;
+    font-family: var(--font-body);
+    padding: 0; 
+}
+
+.navbar-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 0 32px;
-    z-index: 1000;
-    font-family: var(--font-body);
+    height: 100%;
+    max-width: 1400px; 
 }
 
 /* Logo */
 .nav-logo img {
     display: block;
+    max-height: 100px; 
+    width: auto;
 }
 
-/* Links */
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-white);
+}
+
 .nav-links {
     list-style: none;
     display: flex;
     gap: 28px;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 .nav-links li {
     cursor: pointer;
     font-weight: 500;
     transition: color 0.2s ease;
-    height: 100%;
-    margin-bottom: 0px;
     font-size: 1.1rem;
+    position: relative;
 }
 
 .nav-links li:hover {
     color: var(--color-sexto);
 }
 
-/* Botones */
-.nav-buttons button {
+.mobile-login-btn {
+    display: none;
+}
+
+/* Botones Desktop */
+.nav-buttons.desktop-only button {
     background-color: var(--color-quinto);
     color: var(--color-white);
-
     border: none;
     padding: 8px 18px;
     border-radius: var(--radius-pill);
-
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
-.nav-buttons button:hover {
+.nav-buttons.desktop-only button:hover {
     background-color: var(--color-sexto);
+}
+
+
+/* Responsive */
+@media screen and (max-width: 960px) {
+    .navbar-container {
+        padding: 0 20px; 
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    /* Ocultar botones desktop para usar los del menú desplegable */
+    .desktop-only {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: var(--navbar-height); /* Justo debajo de la barra */
+        left: -100%; /* Oculto a la izquierda */
+        background-color: var(--color-segundo); /* Mismo color que el navbar */
+        transition: all 0.4s ease; /* Animación suave */
+        padding: 20px 0;
+        border-top: 1px solid rgba(255,255,255,0.1); /* Línea sutil separadora */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Estado ACTIVO */
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 1.5rem 0;
+        width: 100%;
+        display: table;
+    }
+
+    .nav-links li:hover {
+        background-color: rgba(255, 255, 255, 0.05); 
+        color: var(--color-sexto);
+    }
+
+    .mobile-login-btn {
+        display: block; 
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .btn-nav-mobile {
+        background-color: var(--color-quinto);
+        color: var(--color-white);
+        border: none;
+        padding: 12px 40px;
+        border-radius: var(--radius-pill);
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        width: 80%; 
+    }
 }
