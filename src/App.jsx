@@ -5,6 +5,7 @@ import { AdminPage } from "./pages/AdminPage";
 import { ClientPage } from "./pages/ClientPage";
 import Navbar from "./components/Navbar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AdminRoute } from "./components/AdminRoute"; // <--- Importamos el nuevo
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -13,14 +14,22 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        {/* Rutas Públicas (Cualquiera puede entrar) */}
+        {/* Rutas Públicas */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Rutas Protegidas (Solo si hay usuario logueado) */}
+        {/* NIVEL 1: Rutas para usuarios logueados (Cualquiera) */}
         <Route element={<ProtectedRoute />}>
-           <Route path="/admin" element={<AdminPage />} />
+           
+           {/* El panel de cliente es para cualquier logueado */}
            <Route path="/client" element={<ClientPage />} />
+
+           {/* NIVEL 2: Rutas SOLO para Admins */}
+           {/* Anidamos AdminRoute DENTRO de ProtectedRoute */}
+           <Route element={<AdminRoute />}>
+              <Route path="/admin" element={<AdminPage />} />
+           </Route>
+
         </Route>
 
       </Routes>
