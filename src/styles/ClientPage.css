@@ -1,0 +1,156 @@
+.client-container {
+    background-color: var(--color-primero);
+    min-height: 100vh;
+    padding: 2rem;
+    padding-top: 120px; /* Espacio para navbar */
+    color: var(--color-white);
+    font-family: var(--font-body);
+}
+
+.client-content {
+    max-width: 800px; /* Más angosto que el admin, estilo móvil */
+    margin: 0 auto;
+}
+
+/* --- HERO SECTION --- */
+.client-header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.client-header h1 {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+.client-header span { color: var(--color-sexto); }
+
+/* --- TARJETAS DE ESTADO (PLAN) --- */
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.status-card {
+    background: var(--color-segundo);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+.status-label {
+    display: block;
+    color: var(--color-septimo);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: var(--font-subtitle);
+}
+
+.status-ok { color: #2ecc71; }
+.status-warn { color: #e74c3c; }
+
+/* --- RUTINA VIEWER --- */
+.routine-section h2 {
+    font-family: var(--font-title);
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--color-quinto);
+    padding-left: 1rem;
+}
+
+.routine-viewer {
+    background: var(--color-segundo);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.routine-info {
+    margin-bottom: 1.5rem;
+}
+.routine-goal-text {
+    color: var(--color-septimo);
+    font-style: italic;
+}
+
+/* Reutilizamos estilos de tabs del Admin pero adaptados */
+.client-days-tabs {
+    display: flex;
+    overflow-x: auto; /* Scroll horizontal en móvil */
+    gap: 0.8rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    /* Ocultar barra de scroll fea */
+    scrollbar-width: none; 
+}
+.client-days-tabs::-webkit-scrollbar { display: none; }
+
+.client-day-tab {
+    background: rgba(255,255,255,0.05);
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.client-day-tab.active {
+    background: var(--color-quinto);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(186, 24, 27, 0.4);
+}
+
+/* Ejercicios (Solo lectura) */
+.client-exercise-card {
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--color-tercero);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.ex-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+.ex-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-white);
+}
+
+.ex-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.stat-box {
+    text-align: center;
+    background: rgba(0,0,0,0.2);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+.stat-box small { display: block; color: var(--color-septimo); font-size: 0.7rem; }
+.stat-box span { font-weight: bold; color: var(--color-octavo); }
+
+.ex-notes {
+    font-size: 0.85rem;
+    color: var(--color-septimo);
+    background: rgba(186, 24, 27, 0.1);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
