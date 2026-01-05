@@ -401,7 +401,7 @@ body {
 
 
 /* =========================================
-   RESPONSIVE MOBILE (Estilo App)
+   RESPONSIVE MOBILE (Estilo App) - CORREGIDO
    ========================================= */
 
 @media screen and (max-width: 768px) {
@@ -426,35 +426,47 @@ body {
         padding: 1rem;
     }
 
-    /* 1. Título General de la Sección ("Planes de Entrenamiento") */
+    /* --- CORRECCIÓN DE TÍTULOS (CON FUERZA BRUTA) --- */
+
+    /* 1. Título General ("Planes de Entrenamiento") */
     .section-header h2 {
-        font-size: 1.2rem; /* Achicamos la letra */
-        line-height: 1.2;  /* Damos aire entre renglones */
-        word-wrap: break-word; /* Si es muy largo, que baje de renglón */
-        text-align: center; /* Centrado queda mejor */
+        font-size: 1.2rem !important; /* Forzamos tamaño */
+        line-height: 1.3 !important;  /* Más aire para que no se pegue */
+        word-wrap: break-word !important; 
+        text-align: center !important;
         width: 100%;
+        margin-bottom: 1.5rem !important;
     }
 
     /* 2. Título de la Tarjeta ("Hipertrofia", "Plan de Fuerza...") */
     .routine-title {
-        font-size: 1rem;
-        line-height: 1.4; /* IMPORTANTE: Esto evita que se superpongan las letras */
-        flex-direction: column; /* Ponemos el badge DEBAJO del título */
-        align-items: flex-start;
-        gap: 0.5rem;
+        font-size: 1rem !important; /* Letra controlada */
+        line-height: 1.5 !important;  /* MUCHO aire para evitar superposición */
+        display: flex !important;
+        flex-direction: column !important; /* Badge abajo del texto */
+        align-items: flex-start !important;
+        gap: 8px !important;
+        white-space: normal !important; /* Permitir que el texto baje de renglón */
     }
 
     /* 3. La etiqueta del nombre (Badge rojo) */
     .client-badge {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-        align-self: flex-start; /* Que se alinee al principio */
+        font-size: 0.75rem !important;
+        padding: 4px 10px !important;
+        align-self: flex-start !important;
+        margin-left: 0 !important; /* Quitamos margen izquierdo de escritorio */
+    }
+
+    /* Ajuste para que la tarjeta tenga espacio */
+    .routine-card {
+        padding: 1.2rem !important;
     }
     
     /* Ajuste extra para los días de la semana */
     .week-preview {
-        flex-wrap: wrap; /* Si no entran los días, que bajen */
+        flex-wrap: wrap; 
         justify-content: center;
+        gap: 5px;
     }
 
     .stats-grid {
@@ -493,6 +505,7 @@ body {
     .table-responsive td:last-child {
         border-bottom: none;
         padding-top: 1rem; 
+        justify-content: center; /* Centrar botones de acción */
     }
 
     /* ETIQUETAS AUTOMÁTICAS (Labels) */
