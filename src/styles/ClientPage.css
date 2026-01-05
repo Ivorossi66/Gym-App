@@ -1,6 +1,6 @@
 .client-container {
     background-color: var(--color-primero);
-    min-height: 100vh;
+    min-height: calc(100dvh - navbar);
     padding: 2rem;
     padding-top: 120px; /* Espacio para navbar */
     color: var(--color-white);
@@ -19,7 +19,7 @@
 }
 .client-header h1 {
     font-family: var(--font-title);
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
 }
 .client-header span { color: var(--color-sexto); }
@@ -88,7 +88,6 @@
     gap: 0.8rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    /* Ocultar barra de scroll fea */
     scrollbar-width: none; 
 }
 .client-days-tabs::-webkit-scrollbar { display: none; }

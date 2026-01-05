@@ -26,11 +26,10 @@ body {
 /* --- LAYOUT GENERAL --- */
 .admin-container {
     background-color: var(--color-primero);
-    min-height: 100vh;
     padding: 2rem;
     color: var(--color-noveno);
     font-family: var(--font-body);
-    padding-top: calc(var(--navbar-height) + 20px);
+    min-height: calc(100dvh - var(--navbar-height));
 }
 
 .admin-content {
