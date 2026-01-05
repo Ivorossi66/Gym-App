@@ -1,38 +1,35 @@
-section {
-    scroll-margin-top: 120px;
-    min-height: 100vh; 
-    padding: 20px;
-    border-bottom: 1px solid #333; 
+/* --- FIX GLOBAL DE SCROLL (Anti fondo blanco) --- */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-primero);
 }
 
+section {
+    scroll-margin-top: 120px;
+    min-height: auto; 
+    padding: 40px 20px; 
+    position: relative;
+    box-sizing: border-box; 
+}
+
+/* HERO SECTION */
 .hero-section {
     background-image: url(/img/fondoInicio.png);
     background-size: cover;
     background-position: center;
-    margin-top: 100px;
+    background-repeat: no-repeat;
+    padding-top: calc(var(--navbar-height) + 40px); 
+    padding-bottom: 60px;
+    min-height: 100vh;
     color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-.planes-section {
-    background-color: var(--color-noveno);
-}
-
-.ubicacion-section {
-    background-color: var(--color-white);
-}
-
-.gym-section {
-    background-color: var(--color-segundo);
-    color: var(--color-white);
-}
-
-.contacto-section {
-    background-color: var(--color-primero);
-    color: var(--color-white);
+    margin-top: 0; 
 }
 
 .cta-button {
@@ -44,9 +41,23 @@ section {
     border-radius: var(--radius-pill);
     margin-top: 20px;
     cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(229, 56, 59, 0.4);
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
 }
 
 /* SECCION PLANES */
+.planes-section {
+    background-color: var(--color-noveno);
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .section-title {
     text-align: center;
@@ -55,14 +66,8 @@ section {
     color: var(--color-primero);
     margin-bottom: 40px;
     text-transform: uppercase;
-}
-
-.planes-section {
-    background-color: var(--color-noveno);
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    line-height: 1.1;
+    word-break: break-word; /* Evita que palabras largas rompan el ancho */
 }
 
 .cards-container {
@@ -74,13 +79,17 @@ section {
     max-width: 1200px;
 }
 
-/* Diseño de la Tarjeta */
+/* Diseño de la Tarjeta (FIX RESPONSIVE) */
 .plan-card {
     background-color: var(--color-white);
     border: 1px solid var(--color-octavo);
     border-radius: 15px;
     padding: 30px;
-    width: 300px;
+    
+    /* CAMBIO CLAVE PARA MÓVIL: */
+    width: 100%; 
+    max-width: 320px; /* No forzamos ancho fijo, usamos máximo */
+    
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
@@ -90,19 +99,21 @@ section {
 }
 
 .plan-card:hover {
-    transform: translateY(-10px); /* Efecto de levitar al pasar mouse */
+    transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Plan Destacado (El del medio) */
 .plan-card.featured {
     border: 2px solid var(--color-sexto);
-    transform: scale(1.05); 
+    /* En móvil quitamos el scale excesivo para que no corte los bordes */
+    transform: none; 
     z-index: 1;
 }
 
-.plan-card.featured:hover {
-    transform: scale(1.05) translateY(-10px);
+/* Media query solo para desktop para el efecto de escala */
+@media (min-width: 961px) {
+    .plan-card.featured { transform: scale(1.05); }
+    .plan-card.featured:hover { transform: scale(1.05) translateY(-10px); }
 }
 
 .plan-card .tag {
@@ -132,12 +143,6 @@ section {
     margin-bottom: 20px;
 }
 
-.plan-card .price span {
-    font-size: 1rem;
-    color: var(--color-septimo);
-    font-weight: 400;
-}
-
 .plan-card ul {
     list-style: none;
     margin: 0 0 30px 0; 
@@ -157,8 +162,8 @@ section {
 .plan-button {
     background-color: var(--color-primero);
     color: white;
-    padding: 10px;
-    width: 90px;
+    padding: 12px;
+    width: 100%; /* Botón ancho completo en la tarjeta */
     border: none;
     border-radius: var(--radius-pill);
     cursor: pointer;
@@ -170,24 +175,10 @@ section {
     background-color: var(--color-sexto); 
 }
 
-.plan-button:hover {
-    opacity: 0.9;
-}
-
 /* UBICACIÓN */
 .ubicacion-section {
     background-color: var(--color-white);
-    padding: 80px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ubicacion-section .section-title {
-    text-align: center; 
-    margin-bottom: 60px; 
-    width: 100%;
-    padding: 0 20px;
+    padding: 60px 0;
 }
 
 .map-container {
@@ -199,21 +190,17 @@ section {
 
 .map-container iframe {
     display: block;
+    width: 100%; /* Asegura que no se salga */
     border-radius: 15px;
     box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
 }
 
-/* SECCION GIMNASIO */
-
+/* GYM SECTION */
 .gym-section {
     background-color: var(--color-segundo); 
     color: var(--color-white);
     text-align: center;
-    padding: 80px 20px;
-}
-
-.section-title {
-    margin-bottom: 30px;
+    padding: 60px 20px;
 }
 
 .section-subtitle {
@@ -224,128 +211,66 @@ section {
 
 .gym-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 280px mínimo para móviles */
+    gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .gym-gallery img {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: cover; 
     border-radius: 12px;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    filter: brightness(0.8); 
 }
 
-.gym-gallery img:hover {
-    transform: scale(1.03);
-    filter: brightness(1); 
-    z-index: 2;
-}
-
-
-/* SECCION CONTACTO */
-
+/* CONTACTO SECTION */
 .contacto-section {
     background-color: var(--color-primero); 
     color: var(--color-white);
-    padding: 80px 20px;
-    text-align: center;
+    padding: 60px 20px;
 }
 
 .contacto-container {
     display: flex;
     flex-wrap: wrap; 
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     max-width: 1100px;
-    margin: 40px auto 0;
-    text-align: left; 
+    margin: 30px auto 0;
+    width: 100%;
 }
 
-/* --- Lado Izquierdo (Info) --- */
-.contacto-info {
-    flex: 1 1 400px; 
-    text-align: center;
-    padding: 20px;
+.contacto-info, .contacto-form {
+    flex: 1 1 100%; /* En móvil ocupa 100% */
+    max-width: 500px; /* Tope de ancho */
 }
 
 .trainer-photo {
-    width: 300px;  
-    height: 300px; 
+    width: 250px;  
+    height: 250px; 
     object-fit: cover;
     border-radius: 50%;
     border: 5px solid var(--color-sexto); 
-    box-shadow: 0 0 25px rgba(229, 56, 59, 0.4);
-    margin-bottom: 30px;
-}
-.info-text h3 {
-    font-family: var(--font-title);
-    font-size: 2rem;
-    margin-bottom: 5px;
-    color: var(--color-sexto);
+    margin: 0 auto 30px; /* Centrado */
+    display: block;
 }
 
-.info-text .highlight {
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--color-white);
-}
-
-.contact-data p {
-    margin-bottom: 12px;
-    color: var(--color-octavo);
-    font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* --- Lado Derecho (Formulario) --- */
 .contacto-form {
-    flex: 1 1 400px;
     background-color: var(--color-segundo);
-    padding: 60px;
+    padding: 30px; /* Padding reducido para móvil */
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.contacto-form h3 {
-    margin-bottom: 25px;
-    font-family: var(--font-subtitle);
-    text-align: center;
-}
-
-.contacto-form .form-group {
-    margin-bottom: 20px;
-}
-
-.contacto-form label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--color-octavo);
-    font-size: 0.9rem;
-}
-
-.contacto-form input,
-.contacto-form textarea {
+.contacto-form input, .contacto-form textarea {
     width: 100%;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 8px;
     border: 1px solid var(--color-tercero);
     background-color: var(--color-primero); 
     color: var(--color-white);
-    font-family: var(--font-body);
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.contacto-form input:focus,
-.contacto-form textarea:focus {
-    border-color: var(--color-sexto); 
+    font-size: 16px; /* Evita zoom en iPhone */
 }
 
 .submit-button {
@@ -358,45 +283,42 @@ section {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
 }
 
-.submit-button:hover {
-    background-color: var(--color-quinto);
-    transform: translateY(-3px);
-}
-
-/* Ajuste para móviles */
+/* ============================
+   MEDIA QUERIES (MÓVIL ESPECÍFICO)
+   ============================ */
 @media (max-width: 768px) {
-    .contact-data p {
-        justify-content: flex-start; /* Alinear datos a la izquierda en celular */
+    .section-title {
+        font-size: 2rem;
     }
-    .contacto-info {
-        text-align: left; /* Alinear info a la izquierda en celular */
-    }
-    .trainer-photo {
-        margin: 0 auto 25px; /* Centrar foto solo horizontalmente */
-        display: block;
-    }
-}
 
-
-/* RESPONSIVE */
-
-/* Media Query para celulares */
-@media (max-width: 768px) {
-    /* Ajustes del Hero */
+    /* Ajuste Hero */
     .hero-content h1 {
-        font-size: 2.2rem; /* Más chico para que entre en pantalla vertical */
+        font-size: 2rem;
     }
     
     .hero-content p {
-        font-size: 1.1rem;
-        padding: 0 10px; /* Un poco de aire a los costados */
+        font-size: 1rem;
+        padding: 0 10px;
     }
 
-    /* Ajuste para que el Navbar no tape el título en celular si es muy alto */
+    /* En iPhone, el fixed background a veces falla */
     .hero-section {
-        background-attachment: scroll; /* En algunos móviles el 'fixed' anda mal, mejor scroll */
+        background-attachment: scroll; 
+    }
+    
+    /* Layout Contacto */
+    .contacto-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contacto-info {
+        text-align: center;
+    }
+    
+    .contact-data p {
+        justify-content: center;
     }
 }

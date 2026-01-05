@@ -67,3 +67,23 @@ p {
   font-family: var(--font-body);
   line-height: 1.6;
 }
+
+/* --- FIX GLOBAL PARA MÓVILES --- */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden; /* Bloquea el deslizamiento lateral */
+  background-color: var(--color-primero); /* Si desliza, que se vea negro, no blanco */
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ajuste para evitar zoom en inputs de iPhone */
+input, select, textarea {
+  font-size: 16px !important;
+}
