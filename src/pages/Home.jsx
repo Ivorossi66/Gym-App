@@ -111,12 +111,12 @@ export const Home = () => {
                 <p className="section-subtitle">Equipamiento de primera calidad para tu mejor rendimiento.</p>
 
                 <div className="gym-gallery">
-                    <img src="../src/assets/img/gym1.jpeg" alt="Interior del gimnasio foto 1" loading="lazy" />
-                    <img src="../src/assets/img/gym2.jpeg" alt="Interior del gimnasio foto 2" loading="lazy" />
-                    <img src="../src/assets/img/gym3.jpeg" alt="Interior del gimnasio foto 3" loading="lazy" />
-                    <img src="../src/assets/img/gym4.jpeg" alt="Interior del gimnasio foto 4" loading="lazy" />
-                    <img src="../src/assets/img/gym5.jpeg" alt="Interior del gimnasio foto 5" loading="lazy" />
-                    <img src="../src/assets/img/gym6.jpeg" alt="Interior del gimnasio foto 6" loading="lazy" />
+                    <img src="/img/gym1.jpeg" alt="Interior del gimnasio foto 1" loading="lazy" />
+                    <img src="/img/gym2.jpeg" alt="Interior del gimnasio foto 2" loading="lazy" />
+                    <img src="/img/gym3.jpeg" alt="Interior del gimnasio foto 3" loading="lazy" />
+                    <img src="/img/gym4.jpeg" alt="Interior del gimnasio foto 4" loading="lazy" />
+                    <img src="/img/gym5.jpeg" alt="Interior del gimnasio foto 5" loading="lazy" />
+                    <img src="/img/gym6.jpeg" alt="Interior del gimnasio foto 6" loading="lazy" />
                 </div>
             </section>
 

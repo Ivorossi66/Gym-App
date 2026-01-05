@@ -55,7 +55,7 @@ function Navbar() {
         {/* LOGO */}
         <div className="nav-logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
            {/* Asegúrate que la ruta de la imagen sea correcta en tu proyecto */}
-           <img src="./src/assets/img/image.png" alt="Logo" width="110px" />
+           <img src="/img/image.png" alt="Logo" width="110px" />
         </div>
 
         {/* ICONO HAMBURGUESA (Solo visible en móvil) */}
