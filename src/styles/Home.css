@@ -6,7 +6,7 @@ section {
 }
 
 .hero-section {
-    background-image: url(/public/img/fondoInicio.png);
+    background-image: url(/img/fondoInicio.png);
     background-size: cover;
     background-position: center;
     margin-top: 100px;

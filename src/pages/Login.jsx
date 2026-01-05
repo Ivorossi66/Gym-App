@@ -4,7 +4,6 @@ import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../supabase/client';
 import '../styles/Login.css';
-<img src="/img/image.png" alt="Logo Gym" className="brand-logo" />
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -93,7 +92,7 @@ export const Login = () => {
       <div className="left-pane-banner">
         <div className="banner-content overlay-dark">
           <div className="brand-tagline">
-            <img src={logoGym} alt="Logo Gym" className="brand-logo" />
+            <img src="/img/image.png" alt="Logo Gym" className="brand-logo" />
             ENTRENAMIENTO PERSONAL MF
           </div>
 
