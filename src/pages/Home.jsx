@@ -128,7 +128,7 @@ export const Home = () => {
 
                     {/* Columna Izquierda: Foto y Datos */}
                     <div className="contacto-info">
-                        <img src="./src/assets/img/fotoMateo.jpeg" alt="Entrenador Mateo" className="trainer-photo" />
+                        <img src="/img/fotoMateo.jpeg" alt="Entrenador Mateo" className="trainer-photo" />
                         <div className="info-text">
                             <h3>Mateo F.</h3>
                             <p className="highlight">Profesor de Educación Física</p>
