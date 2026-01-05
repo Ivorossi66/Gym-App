@@ -426,8 +426,36 @@ body {
         padding: 1rem;
     }
 
-    .section-header h2 { font-size: 1.3rem; }
-    .routine-title h3 { font-size: 1rem; }
+    /* 1. Título General de la Sección ("Planes de Entrenamiento") */
+    .section-header h2 {
+        font-size: 1.2rem; /* Achicamos la letra */
+        line-height: 1.2;  /* Damos aire entre renglones */
+        word-wrap: break-word; /* Si es muy largo, que baje de renglón */
+        text-align: center; /* Centrado queda mejor */
+        width: 100%;
+    }
+
+    /* 2. Título de la Tarjeta ("Hipertrofia", "Plan de Fuerza...") */
+    .routine-title {
+        font-size: 1rem;
+        line-height: 1.4; /* IMPORTANTE: Esto evita que se superpongan las letras */
+        flex-direction: column; /* Ponemos el badge DEBAJO del título */
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    /* 3. La etiqueta del nombre (Badge rojo) */
+    .client-badge {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+        align-self: flex-start; /* Que se alinee al principio */
+    }
+    
+    /* Ajuste extra para los días de la semana */
+    .week-preview {
+        flex-wrap: wrap; /* Si no entran los días, que bajen */
+        justify-content: center;
+    }
 
     .stats-grid {
         grid-template-columns: 1fr;
