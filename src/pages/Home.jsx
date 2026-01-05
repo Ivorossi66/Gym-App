@@ -168,7 +168,7 @@ export const Home = () => {
                             <textarea id="mensaje" rows="5" placeholder="Hola, me gustaría saber horarios..." required></textarea>
                         </div>
 
-                        <button type="submit" className="submit-button">Enviar Mensaje</button>
+                        <button type="submit" className="submit-button" onClick={() => window.open('https://wa.me/5493533435324', '_blank')}>Enviar Mensaje</button>
                     </form>
                 </div>
             </section>
