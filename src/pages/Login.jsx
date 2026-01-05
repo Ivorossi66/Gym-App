@@ -4,7 +4,7 @@ import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../supabase/client';
 import '../styles/Login.css';
-import logoGym from '../assets/img/image.png';
+<img src="/img/image.png" alt="Logo Gym" className="brand-logo" />
 
 export const Login = () => {
   const [email, setEmail] = useState('');

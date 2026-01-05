@@ -48,7 +48,7 @@
 .left-pane-banner {
     flex: 1.2;
     position: relative;
-    background-image: url(../assets/img/gym4.jpeg);
+    background-image: url(/public/img/gym4.jpeg);
     background-size: cover;
     background-position: center;
     display: flex;
