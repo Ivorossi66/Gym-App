@@ -5,35 +5,31 @@ import { AdminPage } from "./pages/AdminPage";
 import { ClientPage } from "./pages/ClientPage";
 import Navbar from "./components/Navbar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import { AdminRoute } from "./components/AdminRoute"; // <--- Importamos el nuevo
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <AuthProvider>
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        {/* Rutas Públicas */}
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {/* Rutas Públicas */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
 
-        {/* NIVEL 1: Rutas para usuarios logueados (Cualquiera) */}
-        <Route element={<ProtectedRoute />}>
-           
-           {/* El panel de cliente es para cualquier logueado */}
-           <Route path="/client" element={<ClientPage />} />
+          {/* Rutas Protegidas ADMIN */}
+          <Route element={<ProtectedRoute roleRequired="admin" />}>
+             <Route path="/admin" element={<AdminPage />} />
+          </Route>
 
-           {/* NIVEL 2: Rutas SOLO para Admins */}
-           {/* Anidamos AdminRoute DENTRO de ProtectedRoute */}
-           <Route element={<AdminRoute />}>
-              <Route path="/admin" element={<AdminPage />} />
-           </Route>
+          {/* Rutas Protegidas CLIENTE */}
+          {/* Nota: Asegúrate que en tu BD el rol sea 'cliente' (o 'client') y pon el mismo texto aquí */}
+          <Route element={<ProtectedRoute roleRequired="cliente" />}>
+             <Route path="/client" element={<ClientPage />} />
+          </Route>
 
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
   )
 }
