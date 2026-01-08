@@ -904,3 +904,14 @@ body {
         margin-top: 7rem;
     }
 }
+
+@media screen and (min-width: 1024px) {
+    
+    .admin-container {
+        padding-top: 150px; 
+        max-width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
