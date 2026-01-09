@@ -12,7 +12,7 @@ export const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  
+
   // --- NUEVO ESTADO: Controla si el usuario está creando su contraseña ---
   const [isRegistering, setIsRegistering] = useState(false);
 
@@ -97,7 +97,7 @@ export const Login = () => {
           </div>
 
           <h1 className="main-headline">
-            {isRegistering 
+            {isRegistering
               ? <>CREA TU ACCESO<br />Y EMPIEZA HOY.</>
               : <>TRANSFORMA TU ESFUERZO<br />EN RESULTADOS REALES.</>
             }
@@ -121,8 +121,8 @@ export const Login = () => {
           <div className="login-header">
             <h2>{isRegistering ? 'ACTIVAR CUENTA' : 'BIENVENIDO'}</h2>
             <p className="login-subtitle">
-              {isRegistering 
-                ? 'Ingresa tu email y crea una contraseña nueva.' 
+              {isRegistering
+                ? 'Ingresa tu email y crea una contraseña nueva.'
                 : 'Ingresa tus credenciales para acceder a tu panel.'}
             </p>
           </div>
@@ -148,9 +148,15 @@ export const Login = () => {
                 </label>
                 {/* Solo mostramos "Olvidaste" en modo login */}
                 {!isRegistering && (
-                  <Link to="/forgot-password" className="forgot-link">¿Olvidaste tu contraseña?</Link>
+                  <Link to="/forgot-password" style={{ color: 'var(--color-sexto)', fontSize: '0.9rem', textDecoration: 'none' }}>
+                    ¿Olvidaste tu contraseña?
+                  </Link>
                 )}
               </div>
+
+              <button type="submit" className="btn-login" disabled={loading}>
+                {loading ? "Cargando..." : "Ingresar"}
+              </button>
 
               <div className="password-wrapper">
                 <input
@@ -166,7 +172,7 @@ export const Login = () => {
                 <span
                   className="password-icon"
                   onClick={() => setShowPassword(!showPassword)}
-                  style={{ cursor: 'pointer' }} 
+                  style={{ cursor: 'pointer' }}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
@@ -175,8 +181,8 @@ export const Login = () => {
 
             {/* Checkbox solo visible en login */}
             {!isRegistering && (
-              <div 
-                className="form-group checkbox-group" 
+              <div
+                className="form-group checkbox-group"
                 onClick={() => setRememberMe(!rememberMe)}
                 style={{ cursor: 'pointer' }}
               >
@@ -190,14 +196,14 @@ export const Login = () => {
             <button type="submit" className="login-button-large" disabled={loading}>
               {loading ? 'CARGANDO...' : (isRegistering ? 'CREAR MI CONTRASEÑA' : 'INICIAR SESIÓN')}
             </button>
-            
+
             {/* --- TOGGLE PARA CAMBIAR ENTRE LOGIN Y REGISTRO --- */}
             <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: '#B1A7A6' }}>
               {isRegistering ? (
                 <>
                   ¿Ya tienes tu contraseña?{' '}
-                  <span 
-                    onClick={() => setIsRegistering(false)} 
+                  <span
+                    onClick={() => setIsRegistering(false)}
                     style={{ color: '#BA181B', cursor: 'pointer', fontWeight: 'bold', textDecoration: 'underline' }}
                   >
                     Inicia Sesión aquí
@@ -206,8 +212,8 @@ export const Login = () => {
               ) : (
                 <>
                   ¿Primera vez aquí?{' '}
-                  <span 
-                    onClick={() => setIsRegistering(true)} 
+                  <span
+                    onClick={() => setIsRegistering(true)}
                     style={{ color: '#BA181B', cursor: 'pointer', fontWeight: 'bold', textDecoration: 'underline' }}
                   >
                     Crea tu contraseña

@@ -6,6 +6,7 @@ import { ClientPage } from "./pages/ClientPage";
 import Navbar from "./components/Navbar";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import { ForgotPassword } from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           {/* Rutas Públicas */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
           {/* Rutas Protegidas ADMIN */}
           <Route element={<ProtectedRoute roleRequired="admin" />}>
