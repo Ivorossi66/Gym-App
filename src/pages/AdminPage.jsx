@@ -25,6 +25,7 @@ export const AdminPage = () => {
 
   // --- CLIENTES ---
   const [clients, setClients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); // NUEVO ESTADO PARA EL FILTRO
   const [showClientModal, setShowClientModal] = useState(false);
   const [editingClientId, setEditingClientId] = useState(null);
   const [clientFormData, setClientFormData] = useState({
@@ -107,23 +108,23 @@ export const AdminPage = () => {
     }
   };
 
+  // NUEVO: FILTRO DE CLIENTES EN TIEMPO REAL
+  const filteredClients = clients.filter(client => 
+    client.full_name?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // ==========================================
   // 3. LÓGICA RUTINAS 
   // ==========================================
   const saveRoutine = async () => {
     if (!routineFormData.client_id || !routineFormData.name) return alert("Faltan datos.");
 
-    // Hacemos una copia de los datos del formulario
     const payload = { ...routineFormData };
 
     if (routineFormData.id) {
-      // SI ES EDICIÓN (Ya tiene ID): Actualizamos
       await supabase.from('routines').update(payload).eq('id', routineFormData.id);
     } else {
-      // SI ES NUEVA (No tiene ID):
-
-      delete payload.id; // Borramos la propiedad 'id' para que no viaje como null
-
+      delete payload.id; 
       await supabase.from('routines').insert([payload]);
     }
 
@@ -285,29 +286,54 @@ export const AdminPage = () => {
           {/* === 1. CLIENTES === */}
           {activeTab === 'clientes' && (
             <div className="clients-section animate-fade-in">
-              <div className="section-header"><h2>Listado de Usuarios</h2></div>
+              <div className="section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+                <h2>Listado de Usuarios</h2>
+                
+                {/* BARRA DE BÚSQUEDA */}
+                <div style={{ position: 'relative', width: '300px', maxWidth: '100%' }}>
+                  <FaSearch style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#888' }} />
+                  <input
+                    type="text"
+                    placeholder="Buscar por nombre..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="form-input"
+                    style={{ paddingLeft: '40px', width: '100%', boxSizing: 'border-box', margin: 0 }}
+                  />
+                </div>
+              </div>
+              
               <div className="table-responsive">
                 <table className="admin-table">
                   <thead><tr><th>Usuario</th><th>Plan</th><th>Estado</th><th>Cuota</th><th>Pago</th><th>Último Pago</th><th style={{ textAlign: 'right' }}>Acciones</th></tr></thead>
                   <tbody>
-                    {clients.map(client => {
-                      const expired = isPaymentExpired(client.last_payment_date);
-                      const showAsDue = client.payment_due || expired;
-                      return (
-                        <tr key={client.id}>
-                          <td><div className="user-cell"><div className="user-avatar">{client.full_name?.charAt(0) || 'U'}</div><div><span className="user-name">{client.full_name}</span><span className="user-email">{client.email}</span></div></div></td>
-                          <td><span className="badge plan-badge">{client.plan}</span></td>
-                          <td><span className={`status-dot ${client.status === 'Activo' ? 'status-active' : 'status-inactive'}`}></span>{client.status}</td>
-                          <td>${client.monthly_fee}</td>
-                          <td>{showAsDue ? <span className="status-pill status-danger">Debe</span> : <span className="status-pill status-success">Al día</span>}</td>
-                          <td>{client.last_payment_date || '-'}</td>
-                          <td className="actions-cell">
-                            <button className="action-btn edit" onClick={() => { setEditingClientId(client.id); setClientFormData(client); setShowClientModal(true) }}><FaEdit /></button>
-                            <button className="action-btn delete" onClick={() => handleDeleteClient(client.id)}><FaTrash /></button>
-                          </td>
-                        </tr>
-                      )
-                    })}
+                    {/* USAMOS filteredClients EN LUGAR DE clients */}
+                    {filteredClients.length > 0 ? (
+                      filteredClients.map(client => {
+                        const expired = isPaymentExpired(client.last_payment_date);
+                        const showAsDue = client.payment_due || expired;
+                        return (
+                          <tr key={client.id}>
+                            <td><div className="user-cell"><div className="user-avatar">{client.full_name?.charAt(0) || 'U'}</div><div><span className="user-name">{client.full_name}</span><span className="user-email">{client.email}</span></div></div></td>
+                            <td><span className="badge plan-badge">{client.plan}</span></td>
+                            <td><span className={`status-dot ${client.status === 'Activo' ? 'status-active' : 'status-inactive'}`}></span>{client.status}</td>
+                            <td>${client.monthly_fee}</td>
+                            <td>{showAsDue ? <span className="status-pill status-danger">Debe</span> : <span className="status-pill status-success">Al día</span>}</td>
+                            <td>{client.last_payment_date || '-'}</td>
+                            <td className="actions-cell">
+                              <button className="action-btn edit" onClick={() => { setEditingClientId(client.id); setClientFormData(client); setShowClientModal(true) }}><FaEdit /></button>
+                              <button className="action-btn delete" onClick={() => handleDeleteClient(client.id)}><FaTrash /></button>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    ) : (
+                      <tr>
+                        <td colSpan="7" style={{ textAlign: 'center', padding: '2rem', color: '#888' }}>
+                          No se encontraron clientes con ese nombre.
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
